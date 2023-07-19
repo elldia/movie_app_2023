@@ -1,64 +1,36 @@
-import './styles/style.css';
 import React from "react";
-import PropTypes from 'prop-types';
-
-function Movie(mov){
-  return (
-    <div className="movielist">
-      <h3>I Love {mov.title}</h3>
-      <h3>{mov.rating}</h3>
-      <img src={mov.poster} />
-      {/* <h3>{mov.desc}</h3> */}
-    </div>
-  )
+class App extends React.Component{
+  //react.component의 기능들을 App이 상속받아 사용할 수 있다.
+  //function == Components 많은 function이 모인 Component개념
+  //부모React의 값을 APp자식이 상속받는다.
+  //function에서는 return을 할 수 있다.
+  //function밖에선 return이 안된다.
+  //render가 함수(function) 개념으로 그 안에 return을 작성한다. 
+  state = {
+    count:0,
+  };
+  add=()=>{
+    //setState() => state 의 count 값을 변경함.
+    //count = this.state.count+1
+    
+    this.setState((current)=>({count:current.count+1}));
+    /* this.setState({count:this.state.count+1}); */
+  }
+  minus=()=>{
+    this.setState((current)=>({count:current.count-1}))
+    /* this.setState({count:this.state.count-1}); */
+  }
+  render(){
+    return (
+      <>
+        {/* this는 cureent현재를 의미하며, 현재 state의 count변수값을 출력하라. */}
+        <h1>The number is {this.state.count}</h1>
+        <button onClick={this.add}>add</button>
+        <button onClick={this.minus}>minus</button>
+      </>
+    )
+  }
 }
 
-//  객체배열
-const movieLike = [
-  {
-    id:1, 
-    title:'디어 마이 러브',
-    poster:'https://image.cine21.com/resize/cine21/poster/2023/0615/16_54_19__648ac3abdc38e[X230,330].jpg',
-    // desc:'너무슬픔'
-    // rating:5,
-},
-  {
-    id:2, 
-    title:'비밀의 언덕',
-    poster:'https://image.cine21.com/resize/cine21/poster/2023/0703/13_29_38__64a24eb25f51f[X230,330].jpg',
-    rating:4.9,
-  },
-  {id:3, title:'작은 정원',poster:'https://image.cine21.com/resize/cine21/poster/2023/0622/16_02_30__6493f206cab15[X230,330].jpg',rating:3,},
-  {id:4, title:'미션 임파서블',poster:'https://image.cine21.com/resize/cine21/poster/2023/0703/14_02_31__64a25667b02c6[X230,330].jpg',rating:4.5,},
-  {id:5, title:'슬기로운 아내 수업',poster:'https://image.cine21.com/resize/cine21/poster/2023/0616/11_02_38__648bc2be60edf[X230,330].jpg',rating:3.8,}
-]
-
-// function renderMovie(mov){
-//   return (
-//     <Movie rating={mov.rating} key={mov.id} title={mov.title} poster={mov.poster} />
-//   )
-// }
-// console.log(movieLike.map(renderMovie));
-
-function App() {
-  return (
-    <>
-      {movieLike.map((mov)=>(
-        <Movie 
-          key={mov.id} 
-          title={mov.title} 
-          poster={mov.poster} 
-          rating={mov.rating} 
-        />
-      ))}
-    </>
-  );
-}
-
-Movie.propTypes = {
-  title: PropTypes.string.isRequired,
-  poster: PropTypes.string.isRequired,
-  rating: PropTypes.number,
-};
 
 export default App;

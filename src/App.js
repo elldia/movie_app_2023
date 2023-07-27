@@ -9,6 +9,22 @@ class App extends React.Component{
   state = {
     count:0,
   };
+
+  constructor(props){ //컴포넌트가 생성될 때 호출하는 메서드 컨스트럭트(가장 먼저 생성)!!
+    super(props);
+    console.log('hello');
+  }
+  componentDidMount(){ //컴포넌트가 Dom에 삽입될 때 호출되는 메서드(클래스 내)
+    console.log('componentDidmount');
+  }
+  componentDidUpdate(){ //컴포넌트가 업데이트(수정)된 직후 호출 메서드(클래스 내)
+    console.log('i just update');
+  }
+
+  componentWillUnmount(){ //컴포넌트가 삭제되기 전에 호출 메서드(클래스 내)
+    console.log('Good by~~');
+  }
+
   add=()=>{
     //setState() => state 의 count 값을 변경함.
     //count = this.state.count+1
@@ -21,6 +37,7 @@ class App extends React.Component{
     /* this.setState({count:this.state.count-1}); */
   }
   render(){
+    console.log('I"m rendering'); //위  constrctor와 render 중 뭐가 먼저 실행되는지 테스트.
     return (
       <>
         {/* this는 cureent현재를 의미하며, 현재 state의 count변수값을 출력하라. */}

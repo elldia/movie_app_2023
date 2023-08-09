@@ -1,0 +1,30 @@
+* {
+    box-sizing:border-box;
+    margin:0; padding:0;
+    list-style:none;
+}
+body {background:#f1f1f1;}
+.movies {
+    display:flex;
+    flex-flow:row wrap; 
+    justify-content:space-around;
+    padding:20px;
+}
+.movies section {
+    width:45%; 
+    margin-bottom:30px; 
+    background:#fff;
+}
+.movies section .container {
+    display:flex; padding:10px;
+    box-shadow:0 5px 10px rgba(0,0,0,0.1);
+}
+.movies section .container .movie_title {font-size:1.2rem;}
+.movies section .container .movie_year {font-size:1.0rem;}
+.movies section .container .movie_genres {display:flex;}
+.movies section .container .movie_genres li {
+    background:#222; color:#fff; border-radius:10px;
+    padding:5px 7px; font-size:0.8rem; margin-right:3px;
+}
+.movies section .container .movie_summary {line-height:1.5; padding:10px 0 0;}
+.movies section .container img {margin-right:20px;}
